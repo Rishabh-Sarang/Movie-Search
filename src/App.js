@@ -5,7 +5,7 @@ import "./App.css";
 
 const API_URL = "http://www.omdbapi.com?apikey=95feed94";
 
-const App = () => {
+export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
 
@@ -36,7 +36,7 @@ const App = () => {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie) => (
-            <MovieCard movie={movie} />
+            <MovieCard key={movie.imdbID} movie={movie} />
           ))}
         </div>
       ) : (
@@ -46,6 +46,4 @@ const App = () => {
       )}
     </div>
   );
-};
-
-export default App;
+}
